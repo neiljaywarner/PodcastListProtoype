@@ -31,6 +31,7 @@ public class Item {
     public String encoded;
     */
 
+    // see thumbnail.java in other project...
 
 
 

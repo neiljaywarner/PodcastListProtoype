@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.support.design.widget.BottomNavigationView
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import android.widget.TextView
 import com.spiritflightapps.podcastlistprototype.model.ArticleResponse
 import com.spiritflightapps.podcastlistprototype.network.ITunesRSSFeed
 import kotlinx.android.synthetic.main.activity_main.*
@@ -56,6 +57,13 @@ class MainActivity : AppCompatActivity() {
                                                                  Log.e("NJW", "size ${articleResponse?.channel?.items?.size}")
                     val firstTitle = articleResponse?.channel?.items?.first()?.title
                     Log.e("NJW", "first $firstTitle")
+                    val firstLink = articleResponse?.channel?.items?.first()?.link
+                    Log.e("NJW", "first $firstLink")
+
+                    val text_message = findViewById<TextView>(R.id.message)
+                    text_message.text = "http://traffic.libsyn.com/podrunner/122bpm_mindwalk.mp3"
+                    // noet: this is enclosure:url
+                    // TODO: populate adapter...                                  maybe leave off pics for now so offline mode works better/easier and no jank issues
 
 
                 } else {
