@@ -51,18 +51,25 @@ class MainActivity : AppCompatActivity() {
         feedCall.enqueue(object : Callback<ArticleResponse> {
             override fun onResponse(call: Call<ArticleResponse>?, response: Response<ArticleResponse>?) {
                 if (response != null && response.isSuccessful) {
-                    //pokemonListListener.onSuccess(response.body())
                     val articleResponse : ArticleResponse? = response.body()
                     Log.e("NJW", articleResponse?.channel?.title)
+                                                                 Log.e("NJW", "size ${articleResponse?.channel?.items?.size}")
+                    val firstTitle = articleResponse?.channel?.items?.first()?.title
+                    Log.e("NJW", "first $firstTitle")
+
+
                 } else {
                     // pokemonListListener.onFailure(appContext.getString(R.string.error_fetching_data))
+                                        Log.e("NJW", "RSS Feed fetch unsuccessful"  )
+
 
                 }
 
             }
 
             override fun onFailure(call: Call<ArticleResponse>?, t: Throwable?) {
-                TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+                                                        Log.e("NJW", "RSS Feed fetch error"  )
+
             }
 
         })
